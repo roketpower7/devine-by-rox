@@ -28,24 +28,23 @@
             margin: 0;
             padding: 0;
         }
-        /* Esto va dentro de tu etiqueta <style> */
+        /* 1. Quitamos cualquier margen que pueda empujar el widget */
+        .calendly-inline-widget {
+            overflow: hidden !important;
+            height: 950px !important; /* Altura suficiente para que el formulario no se corte */
+        }
 
-/* 1. Forzamos al iframe a no mostrar barras */
-.calendly-inline-widget iframe {
-    scrolling: no !important;
-    overflow: hidden !important;
-}
+        /* 2. El TRUCO: Forzamos al iframe interno a medir el 100% de su contenedor */
+            .calendly-inline-widget iframe {
+            height: 100% !important;
+            width: 100% !important;
+            overflow: hidden !important;
+        }
 
-/* 2. Quitamos el scroll del contenedor */
-.calendly-inline-widget {
-    overflow: hidden !important;
-}
-
-/* 3. Aseguramos que la sección de citas no limite el tamaño */
-#citas {
-    height: auto !important;
-    min-height: 800px;
-}
+        /* 3. Evitamos el scroll lateral en la sección de citas */
+        #citas {
+        overflow-x: hidden !important;
+        }
 
 
 
@@ -264,9 +263,9 @@
     </a>
 </div>
     <div class="calendly-inline-widget" 
-     data-url="https://calendly.com/roketpower7/30min?hide_landing_page_details=1&hide_gdpr_banner=1" 
-     style="min-width:320px; height:2050px; border:none;">
-</div>    
+     data-url="https://calendly.com/roketpower7/30min?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=6a1e34" 
+     style="min-width:320px; height:950px;">
+</div>  
      
 <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
     </section>
