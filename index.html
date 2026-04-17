@@ -29,6 +29,17 @@
             padding: 0;
         }
 
+        /* Esto va dentro de <style> */
+.calendly-inline-widget {
+    overflow: hidden !important;
+}
+
+@media (max-width: 768px) {
+    .calendly-inline-widget {
+        height: 1050px !important; /* En móviles el calendario es más largo */
+    }
+}
+
         /* 1. PORTADA */
         .hero {
             height: 100vh;
