@@ -3,18 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Divine By Rox | Uñas y Pedicura</title>
+    <title>Divine By Rox | Uñas, Pedicura y Estilo</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
-        /* Paleta de Colores Oficial */
+        /* --- NUEVA PALETA DE COLORES --- */
         :root {
-            --guinda: #6A1E34;
-            --dorado: #D4AF37;
-            --dorado-claro: #ebd07f;
-            --fondo: #FDFBF7; 
-            --texto: #333333;
+            --cafe: #4B3621;       /* Café chocolate profundo */
+            --dorado: #D4AF37;     /* Dorado elegante */
+            --dorado-claro: #F1E5AC;
+            --beige: #F5F1E9;      /* Fondo cálido tipo spa */
+            --beige-oscuro: #E8DCC4;
+            --texto: #5D4037;      /* Café suave para lectura */
+            --blanco: #FFFFFF;
         }
 
         html {
@@ -23,41 +25,33 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: var(--fondo);
+            background-color: var(--beige);
             color: var(--texto);
             margin: 0;
             padding: 0;
+            line-height: 1.6;
         }
-        /* 1. Quitamos cualquier margen que pueda empujar el widget */
+
+        /* --- SOLUCIÓN DE SCROLL CALENDLY --- */
         .calendly-inline-widget {
             overflow: hidden !important;
-            height: 950px !important; /* Altura suficiente para que el formulario no se corte */
         }
-
-        /* 2. El TRUCO: Forzamos al iframe interno a medir el 100% de su contenedor */
-            .calendly-inline-widget iframe {
-            height: 100% !important;
-            width: 100% !important;
+        .calendly-inline-widget iframe {
             overflow: hidden !important;
         }
 
-        /* 3. Evitamos el scroll lateral en la sección de citas */
-        #citas {
-        overflow-x: hidden !important;
-        }
-
-
-
-        /* 1. PORTADA */
+        /* 1. PORTADA (HERO) */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(106, 30, 52, 0.85), rgba(106, 30, 52, 0.85)), url('https://images.unsplash.com/photo-1522337660859-02fbefca4702?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            /* Gradiente Café para resaltar el dorado */
+            background: linear-gradient(rgba(75, 54, 33, 0.82), rgba(75, 54, 33, 0.82)), 
+                        url('https://images.unsplash.com/photo-1522337660859-02fbefca4702?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            color: white;
+            color: var(--blanco);
             padding: 0 20px;
         }
 
@@ -66,7 +60,7 @@
             font-size: 5.5rem;
             color: var(--dorado);
             margin: 0;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
         }
 
         .hero p {
@@ -76,8 +70,10 @@
             text-transform: uppercase;
             margin-top: 5px;
             margin-bottom: 40px;
+            color: var(--dorado-claro);
         }
 
+        /* BOTONES */
         .botones-hero {
             display: flex;
             gap: 20px;
@@ -93,13 +89,13 @@
             transition: all 0.3s ease;
             border: 2px solid var(--dorado);
             text-transform: uppercase;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             letter-spacing: 1px;
         }
 
         .btn-dorado {
             background-color: var(--dorado);
-            color: var(--guinda);
+            color: var(--cafe);
         }
 
         .btn-dorado:hover {
@@ -114,39 +110,39 @@
 
         .btn-transparente:hover {
             background-color: var(--dorado);
-            color: var(--guinda);
+            color: var(--cafe);
         }
 
-        /* Estilos Generales */
+        /* 2. SECCIONES GENERALES */
         .seccion {
-            padding: 80px 20px;
-            max-width: 1000px;
+            padding: 90px 20px;
+            max-width: 1100px;
             margin: 0 auto;
             text-align: center;
         }
 
         .titulo-seccion {
             font-family: 'Great Vibes', cursive;
-            font-size: 4rem;
-            color: var(--guinda);
-            margin-bottom: 5px;
+            font-size: 4.5rem;
+            color: var(--cafe);
+            margin-bottom: 10px;
             margin-top: 0;
         }
 
-        /* NUEVA SECCIÓN: SERVICIOS */
-        .servicios-container {
+        /* SERVICIOS */
+        .servicios-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
-            margin-top: 40px;
+            margin-top: 50px;
         }
 
         .servicio-card {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            border-bottom: 4px solid var(--dorado);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            background: var(--blanco);
+            padding: 40px 30px;
+            border-radius: 20px;
+            border-bottom: 5px solid var(--dorado);
+            box-shadow: 0 10px 30px rgba(75, 54, 33, 0.05);
             transition: transform 0.3s ease;
         }
 
@@ -155,21 +151,22 @@
         }
 
         .servicio-card h3 {
-            color: var(--guinda);
+            color: var(--cafe);
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 15px;
+            font-size: 1.2rem;
         }
 
-        /* 2. CARRUSEL */
+        /* 3. CARRUSEL */
         .carrusel {
             display: flex;
             overflow-x: auto;
             scroll-snap-type: x mandatory;
             gap: 20px;
-            padding: 20px 0;
+            padding: 30px 0;
             scrollbar-width: thin;
-            scrollbar-color: var(--dorado) var(--fondo);
+            scrollbar-color: var(--dorado) var(--beige);
         }
 
         .carrusel::-webkit-scrollbar { height: 8px; }
@@ -177,34 +174,50 @@
 
         .foto-carrusel {
             scroll-snap-align: center;
-            flex: 0 0 280px;
-            height: 380px;
-            object-fit: cover;
-            border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-            border: 2px solid var(--dorado);
-        }
-
-        /* 3. CALENDLY Y MAPA */
-        .mapa-container {
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-            border: 2px solid var(--dorado);
-            margin-top: 30px;
-        }
-
-        iframe {
-            width: 100%;
+            flex: 0 0 300px;
             height: 400px;
-            border: none;
-            display: block;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border: 3px solid var(--dorado);
         }
 
+        /* 4. WHATSAPP Y MAPA */
+        .whatsapp-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            color: #25D366; /* Verde original para reconocimiento */
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid #25D366;
+            padding: 12px 25px;
+            border-radius: 50px;
+            transition: 0.3s;
+            margin-bottom: 30px;
+        }
+
+        .whatsapp-link:hover {
+            background-color: #25D366;
+            color: white;
+        }
+
+        .mapa-container {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 3px solid var(--dorado);
+            margin-top: 40px;
+        }
+
+        iframe { width: 100%; height: 450px; border: none; display: block; }
+
+        /* MÓVIL */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 3.5rem; }
-            .titulo-seccion { font-size: 3rem; }
-            .foto-carrusel { flex: 0 0 240px; height: 340px; }
+            .hero h1 { font-size: 3.8rem; }
+            .titulo-seccion { font-size: 3.5rem; }
+            .foto-carrusel { flex: 0 0 260px; height: 350px; }
+            .calendly-inline-widget { height: 1000px !important; }
         }
     </style>
 </head>
@@ -215,68 +228,67 @@
         <p>Uñas, Pedicura & Estilo</p>
         <div class="botones-hero">
             <a href="#citas" class="btn btn-dorado">Agendar Cita</a>
-            <a href="#servicios" class="btn btn-transparente">Servicios</a>
+            <a href="#servicios" class="btn btn-transparente">Ver Servicios</a>
         </div>
     </section>
 
     <section class="seccion" id="servicios">
-        <h2 class="titulo-seccion">Nuestros Servicios</h2>
-        <div class="servicios-container">
+        <h2 class="titulo-seccion">Nuestra Experiencia</h2>
+        <div class="servicios-grid">
             <div class="servicio-card">
-                <h3>Manicura</h3>
-                <p>Diseños personalizados, Gelish, Acrílico y Polygel con acabados de alta gama.</p>
+                <h3>Manicura Premium</h3>
+                <p>Especialistas en Acrílico, Polygel y Diseños a mano alzada con acabados de lujo.</p>
             </div>
             <div class="servicio-card">
                 <h3>Pedicura Spa</h3>
-                <p>Tratamiento profundo para tus pies, exfoliación, hidratación y esmaltado impecable.</p>
+                <p>Relajación total con exfoliación profunda e hidratación para pies impecables.</p>
             </div>
             <div class="servicio-card">
-                <h3>Estilo</h3>
-                <p>Asesoría personalizada para que tus manos y pies reflejen tu personalidad divina.</p>
+                <h3>Diseño Divino</h3>
+                <p>Acentuamos tu estilo personal con las últimas tendencias y cristalería fina.</p>
             </div>
         </div>
     </section>
 
-    <section class="seccion" id="galeria">
-        <h2 class="titulo-seccion">Nuestro Trabajo</h2>
-        <p style="margin-bottom: 40px; color: #666;">Diseños exclusivos de pies y manos</p>
-        
+    <section class="seccion" id="galeria" style="background-color: var(--beige-oscuro);">
+        <h2 class="titulo-seccion">Galería</h2>
+        <p style="color: var(--cafe); margin-bottom: 30px;">Inspiración para tu próximo set</p>
         <div class="carrusel">
             <img src="Dise%C3%B1o%20de%20u%C3%B1as%201.jpg" alt="Uñas 1" class="foto-carrusel">
             <img src="Dise%C3%B1o%20de%20u%C3%B1as%202.jpg" alt="Uñas 2" class="foto-carrusel">
-            <img src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pedicura Spa" class="foto-carrusel">
+            <img src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pedicura" class="foto-carrusel">
             <img src="Dise%C3%B1o%20de%20u%C3%B1as%203.jpg" alt="Uñas 3" class="foto-carrusel">
             <img src="Dise%C3%B1o%20de%20u%C3%B1as%204.jpg" alt="Uñas 4" class="foto-carrusel">
         </div>
     </section>
 
-    <section class="seccion" id="citas" style="background-color: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
-        <h2 class="titulo-seccion">Reserva tu Set</h2>
-        <p style="margin-bottom: 30px; color: #666;">Selecciona manicura o pedicura en el horario que prefieras</p>
+    <section class="seccion" id="citas">
+        <h2 class="titulo-seccion">Tu Momento</h2>
+        <p style="margin-bottom: 25px;">Reserva tu espacio fácilmente:</p>
 
-        <div style="text-align: center; margin-bottom: 20px;">
-    <p style="font-size: 0.9rem; color: #666;">¿Tienes dudas sobre un diseño o servicio antes de agendar?</p>
-    <a href="https://wa.me/526871597255?text=Hola%20Rox,%20tengo%20una%20duda%20antes%20de%20agendar%20mi%20cita..." 
-       style="display: inline-flex; align-items: center; gap: 10px; color: #25d366; text-decoration: none; font-weight: 600; border: 1px solid #25d366; padding: 8px 20px; border-radius: 20px; transition: 0.3s;">
-        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.148-.67-1.611-.918-2.21-.242-.587-.487-.508-.67-.517-.172-.008-.37-.01-.568-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.659 1.433 5.628 1.433h.005c6.554 0 11.89-5.335 11.893-11.892a11.826 11.826 0 00-3.481-8.413z"></path></svg>
-        Consultar por WhatsApp
-    </a>
-</div>
-    <div class="calendly-inline-widget" 
-     data-url="https://calendly.com/roketpower7/30min?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=6a1e34" 
-     style="min-width:320px; height:750px;">
-</div>  
-     
-<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        <div style="margin-bottom: 40px;">
+            <a href="https://wa.me/521234567890?text=Hola%20Rox,%20tengo%20una%20duda%20sobre%20los%20servicios..." class="whatsapp-link" target="_blank">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.148-.67-1.611-.918-2.21-.242-.587-.487-.508-.67-.517-.172-.008-.37-.01-.568-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.659 1.433 5.628 1.433h.005c6.554 0 11.89-5.335 11.893-11.892a11.826 11.826 0 00-3.481-8.413z"/></svg>
+                ¿Dudas? Escríbenos por WhatsApp
+            </a>
+        </div>
+
+        <div style="background-color: white; border-radius: 20px; box-shadow: 0 15px 40px rgba(75, 54, 33, 0.1); overflow: hidden;">
+            <div class="calendly-inline-widget" 
+                 data-url="https://calendly.com/roketpower7/30min?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=4b3621" 
+                 style="min-width:320px; height:750px;">
+            </div>
+            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        </div>
     </section>
 
     <section class="seccion" id="ubicacion">
         <h2 class="titulo-seccion">Visítanos</h2>
-        <p style="margin-bottom: 30px; color: #666;">Te esperamos en nuestro estudio</p>
-        
+        <p>Expertise y estilo en el corazón de la ciudad</p>
         <div class="mapa-container">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.661159846067!2d-99.1678!3d19.4326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDI1JzU3LjQiTiA5OcKwMTAnMDQuMSJX!5e0!3m2!1ses!2smx!4v1625567890123!5m2!1ses!2smx" allowfullscreen="" loading="lazy"></iframe>
         </div>
+        <p style="margin-top: 40px; font-size: 0.8rem; color: #999;">&copy; 2026 Divine By Rox - Todos los derechos reservados.</p>
     </section>
 
 </body>
