@@ -28,17 +28,26 @@
             margin: 0;
             padding: 0;
         }
+        /* Esto va dentro de tu etiqueta <style> */
 
-        /* Esto va dentro de <style> */
+/* 1. Forzamos al iframe a no mostrar barras */
+.calendly-inline-widget iframe {
+    scrolling: no !important;
+    overflow: hidden !important;
+}
+
+/* 2. Quitamos el scroll del contenedor */
 .calendly-inline-widget {
     overflow: hidden !important;
 }
 
-@media (max-width: 768px) {
-    .calendly-inline-widget {
-        height: 1050px !important; /* En móviles el calendario es más largo */
-    }
+/* 3. Aseguramos que la sección de citas no limite el tamaño */
+#citas {
+    height: auto !important;
+    min-height: 800px;
 }
+
+
 
         /* 1. PORTADA */
         .hero {
@@ -255,13 +264,13 @@
     </a>
 </div>
         
-     <div class="calendly-inline-widget" 
-     data-url="https://calendly.com/roketpower7/30min?hide_landing_page_details=1&hide_gdpr_banner=1" 
-     style="min-width:320px; height:750px; overflow:hidden;">
-</div>
+     
 <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
     </section>
-
+<div class="calendly-inline-widget" 
+     data-url="https://calendly.com/roketpower7/30min?hide_landing_page_details=1&hide_gdpr_banner=1" 
+     style="min-width:320px; height:750px; border:none;">
+</div>
     <section class="seccion" id="ubicacion">
         <h2 class="titulo-seccion">Visítanos</h2>
         <p style="margin-bottom: 30px; color: #666;">Te esperamos en nuestro estudio</p>
