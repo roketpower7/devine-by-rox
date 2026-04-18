@@ -18,8 +18,7 @@
 
         * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
         
-     html { 
-            /* Se eliminó scroll-behavior: smooth para recuperar la inercia natural del celular */
+        html { 
             -webkit-text-size-adjust: 100%;
         }
         
@@ -31,28 +30,26 @@
             color: var(--cafe-negro);
             font-family: 'Montserrat', sans-serif;
             -webkit-font-smoothing: antialiased;
-            overscroll-behavior-y: none; /* Evita el rebote elástico en Android */
+            overscroll-behavior-y: none;
         }
 
-       /* EL CONTENEDOR SEGURO QUE EVITA EL FREEZE */
         .site-wrapper {
             width: 100%;
             overflow-x: hidden;
             position: relative;
-            overflow-anchor: none; /* ESTO APAGA EL BLOQUEO NATIVO DE CHROME */
+            overflow-anchor: none; 
         }
 
-       /* --- TRANSICIONES (REVEAL) --- */
+        /* --- TRANSICIONES (REVEAL) --- */
         .reveal {
             opacity: 0;
-            /* Eliminamos el transform que movía las cosas de lugar */
             transition: opacity 0.6s ease-in-out; 
         }
         .reveal.active { 
             opacity: 1; 
         }
 
-       /* --- MENÚ TIPO PAINTBOX (MINIMALISMO EXTREMO) --- */
+        /* --- MENÚ TIPO PAINTBOX (MINIMALISMO EXTREMO REPARADO) --- */
         .nav-bar {
             position: fixed; top: 0; width: 100%;
             background: rgba(249, 247, 242, 0.95);
@@ -62,10 +59,11 @@
             padding: 15px 50px; z-index: 2000;
         }
         
-        /* La hamburguesa siempre visible */
+        /* RESTAURADO: Estilos del Logo */
+        .nav-logo { font-family: 'Great Vibes', cursive; font-size: 1.8rem; color: var(--cafe-negro); text-decoration: none; }
+
         .menu-toggle { display: block; cursor: pointer; } 
         
-        /* Los enlaces ocultos por defecto, listos para desplegarse */
         .nav-links { 
             position: absolute; 
             top: 70px; 
@@ -85,27 +83,32 @@
         }
 
         .nav-links.active { opacity: 1; visibility: visible; transform: translateY(0); }
-        .nav-links a { margin-bottom: 25px; font-size: 0.8rem; }
         
-        /* Agrupamos la hamburguesa y el botón de reservar a la derecha */
+        /* RESTAURADO: Estilos de los Enlaces */
+        .nav-links a { 
+            text-decoration: none; 
+            color: var(--cafe-negro); 
+            font-size: 0.8rem; 
+            font-weight: 700; 
+            letter-spacing: 2px; 
+            text-transform: uppercase;
+            margin-bottom: 25px; 
+        }
+        
         .nav-controls { display: flex; align-items: center; gap: 20px; }
 
         section { scroll-margin-top: 80px; padding: 100px 20px; max-width: 1200px; margin: 0 auto; text-align: center; }
         .titulo-seccion { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 6px; font-weight: 700; margin-bottom: 60px; }
 
         /* --- HERO --- */
-       /* --- HERO (OPCIÓN 1: BLANCO EDITORIAL) --- */
-       /* --- HERO --- */
         .hero { 
-            /* El truco pro: 100dvh evita que la página brinque cuando se oculta la barra del navegador */
             height: 100dvh; 
-            min-height: 100vh; /* Respaldo para navegadores viejos */
+            min-height: 100vh; 
             display: flex; flex-direction: column; justify-content: center; align-items: center; 
             background: linear-gradient(rgba(26, 18, 11, 0.3), rgba(26, 18, 11, 0.3)), 
                         url('https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=1920&q=80') center/cover;
             color: var(--blanco); border-bottom: 1px solid var(--cafe-negro);
         }
-        /* Letra blanca con una sombra trasera imperceptible para separar la letra del fondo */
         .hero h1 { font-family: 'Great Vibes', cursive; font-size: 6rem; margin: 0; color: var(--blanco); text-shadow: 0px 4px 15px rgba(0,0,0,0.5); }
         .hero p { letter-spacing: 10px; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 30px; color: var(--dorado); }
 
@@ -139,40 +142,10 @@
             justify-content: center; align-items: center; border: 1px solid var(--dorado); z-index: 3000;
         }
 
-       /* --- MENÚ MÓVIL (HAMBURGUESA) --- */
-        .menu-toggle { display: none; cursor: pointer; }
-
-        @media (max-width: 768px) { 
-            .menu-toggle { display: block; } 
-            
-            .nav-links { 
-                position: absolute; 
-                top: 70px; 
-                left: 0; 
-                width: 100%; 
-                background: var(--beige); 
-                flex-direction: column; 
-                align-items: center;
-                padding: 30px 0;
-                border-bottom: 1px solid var(--cafe-negro);
-                box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-                
-                opacity: 0; 
-                visibility: hidden; 
-                transform: translateY(-10px);
-                transition: all 0.3s ease-in-out;
-            }
-
-            .nav-links.active {
-                opacity: 1;
-                visibility: visible;
-                transform: translateY(0);
-            }
-
-            .nav-links a { margin-bottom: 25px; font-size: 0.8rem; }
-            .btn-reservar-menu { margin-bottom: 0 !important; }
-            
-            .hero h1 { font-size: 3.5rem; } 
+        /* Ajuste de márgenes para móviles */
+        @media (max-width: 768px) {
+            .nav-bar { padding: 15px 20px; }
+            .hero h1 { font-size: 3.5rem; }
         }
     </style>
 </head>
@@ -180,7 +153,7 @@
 
     <div class="site-wrapper">
 
-       <nav class="nav-bar">
+        <nav class="nav-bar">
             <a href="#inicio" class="nav-logo">Divine</a>
             
             <div class="nav-controls">
