@@ -13,130 +13,86 @@
             --dorado: #C5A059;
             --beige: #F9F7F2;
             --blanco: #FFFFFF;
+            --linea: rgba(26, 18, 11, 0.15);
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
         
-        body { 
+        html, body { 
+            overflow-x: hidden; 
+            width: 100%; 
+            scroll-behavior: smooth; 
             background-color: var(--beige);
             color: var(--cafe-negro);
             font-family: 'Montserrat', sans-serif;
-            line-height: 1.6;
         }
 
-        /* =========================================
-           NUEVO: MENÚ TIPO PAINTBOX (STICKY)
-           ========================================= */
+        /* --- TRANSICIONES (REVEAL) --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease-out;
+            will-change: transform, opacity;
+        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* --- MENÚ TIPO PAINTBOX (STICKY) --- */
         .nav-bar {
-            position: fixed;
-            top: 0;
-            width: 100%;
+            position: fixed; top: 0; width: 100%;
             background: rgba(249, 247, 242, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--cafe-negro);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 50px;
-            z-index: 2000;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 50px; z-index: 2000;
         }
+        .nav-logo { font-family: 'Great Vibes', cursive; font-size: 1.8rem; color: var(--cafe-negro); text-decoration: none; }
+        .nav-links { display: flex; gap: 25px; }
+        .nav-links a { text-decoration: none; color: var(--cafe-negro); font-size: 0.65rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
 
-        .nav-logo {
-            font-family: 'Great Vibes', cursive;
-            font-size: 1.8rem;
-            color: var(--cafe-negro);
-            text-decoration: none;
+        section { scroll-margin-top: 80px; padding: 100px 20px; max-width: 1200px; margin: 0 auto; text-align: center; }
+        .titulo-seccion { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 6px; font-weight: 700; margin-bottom: 60px; }
+
+        /* --- HERO --- */
+        .hero { 
+            height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; 
+            background: linear-gradient(rgba(26, 18, 11, 0.3), rgba(26, 18, 11, 0.3)), 
+                        url('https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=1920&q=80') center/cover;
+            color: var(--blanco); border-bottom: 1px solid var(--cafe-negro);
         }
+        .hero h1 { font-family: 'Great Vibes', cursive; font-size: 6rem; margin: 0; color: var(--dorado); }
+        .hero p { letter-spacing: 10px; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 30px; }
 
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
+        /* --- SERVICIOS --- */
+        .servicios-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); border: 1px solid var(--cafe-negro); }
+        .card { padding: 60px 40px; border: 0.5px solid var(--cafe-negro); background: var(--blanco); text-align: left; transition: 0.4s; }
+        .card:hover { background: var(--cafe-negro); color: var(--blanco); }
 
-        .nav-links a {
-            text-decoration: none;
-            color: var(--cafe-negro);
-            font-size: 0.65rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            transition: 0.3s;
-        }
+        /* --- GALERÍA HÍBRIDA (AUTO + MANUAL) --- */
+        .carrusel-wrapper { width: 100%; overflow-x: auto; display: flex; gap: 15px; padding: 20px 0; scrollbar-width: none; }
+        .carrusel-wrapper::-webkit-scrollbar { display: none; }
+        .foto { width: 300px; height: 400px; object-fit: cover; border: 1px solid var(--cafe-negro); flex-shrink: 0; }
 
-        .nav-links a:hover { color: var(--dorado); }
+        /* --- RESEÑAS EDITORIALES --- */
+        .dark-block { background-color: var(--cafe-negro); color: var(--blanco); padding: 100px 20px; max-width: 100%; }
+        .resena-card { max-width: 800px; margin: 0 auto 60px; border-left: 1px solid var(--dorado); padding-left: 30px; text-align: left; }
+        .resena-texto { font-size: 1.2rem; font-weight: 200; font-style: italic; margin-bottom: 15px; }
+        .resena-autor { font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--dorado); }
 
-        /* Espaciado para que el contenido no quede bajo el menú */
-        section { scroll-margin-top: 80px; }
-
-        /* =========================================
-           RESEÑAS ESTILO EDITORIAL (INTEGRADAS)
-           ========================================= */
-        .resenas-container {
-            background-color: var(--cafe-negro);
-            color: var(--blanco);
-            padding: 120px 20px;
-            text-align: center;
-        }
-
-        .resena-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 60px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .resena-card {
-            border-left: 1px solid var(--dorado);
-            padding-left: 30px;
-            text-align: left;
-        }
-
-        .quote-icon {
-            color: var(--dorado);
-            font-size: 2rem;
-            font-family: serif;
-            line-height: 0;
-        }
-
-        .resena-texto {
-            font-size: 1.1rem;
-            font-weight: 200;
-            font-style: italic;
-            margin: 20px 0;
-            letter-spacing: 0.5px;
-        }
-
-        .resena-meta {
-            font-size: 0.6rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--dorado);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* Estrellas integradas en el estilo */
-        .stars { color: var(--dorado); letter-spacing: 2px; }
-
-        /* =========================================
-           RESTO DE ESTILOS (MANTENIDOS)
-           ========================================= */
-        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
-        .hero h1 { font-family: 'Great Vibes', cursive; font-size: 5.5rem; color: var(--cafe-negro); }
-        
+        /* --- BOTONES --- */
         .btn {
-            padding: 18px 45px; border: 1px solid var(--cafe-negro);
-            text-decoration: none; color: var(--cafe-negro); font-size: 0.7rem;
-            font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+            display: inline-block; padding: 18px 45px; border: 1px solid var(--cafe-negro);
+            text-decoration: none; color: var(--cafe-negro); font-size: 0.7rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; transition: 0.4s;
+        }
+        .btn:hover { background: var(--cafe-negro); color: var(--blanco); }
+        .btn-white { border-color: var(--blanco); color: var(--blanco); }
+
+        .whatsapp-float {
+            position: fixed; bottom: 25px; right: 25px; background: var(--cafe-negro); 
+            color: var(--dorado); width: 60px; height: 60px; display: flex; 
+            justify-content: center; align-items: center; border: 1px solid var(--dorado); z-index: 3000;
         }
 
-        @media (max-width: 768px) {
-            .nav-bar { padding: 15px 20px; }
-            .nav-links { display: none; } /* Ocultar en móvil para simplicidad tipo Paintbox */
-            .hero h1 { font-size: 3.5rem; }
-        }
+        @media (max-width: 768px) { .nav-links { display: none; } .hero h1 { font-size: 3.5rem; } }
     </style>
 </head>
 <body>
@@ -152,43 +108,99 @@
         <a href="#citas" class="btn" style="padding: 10px 20px; font-size: 0.6rem;">Book Now</a>
     </nav>
 
-    <section class="hero" id="inicio">
-        <h1>Divine By Rox</h1>
-        <p style="letter-spacing: 10px; text-transform: uppercase; font-size: 0.8rem;">Guasave Nail Studio</p>
+    <section class="hero" id="inicio" style="max-width: 100%;">
+        <h1 class="reveal">Divine By Rox</h1>
+        <p class="reveal">The Nail Editorial</p>
+        <a href="#citas" class="btn btn-white reveal">Agendar Cita</a>
     </section>
 
-    <section class="resenas-container">
-        <h2 style="font-size: 0.7rem; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 80px;">Client Stories</h2>
-        
-        <div class="resena-grid">
-            <div class="resena-card">
-                <div class="quote-icon">“</div>
-                <p class="resena-texto">La experiencia en Divine es inigualable. Rox tiene una precisión increíble para el nail art minimalista.</p>
-                <div class="resena-meta">
-                    <span class="stars">★★★★★</span>
-                    <span>Maria Gonzalez</span>
-                </div>
-            </div>
+    <section class="seccion reveal" id="servicios">
+        <h2 class="titulo-seccion">Nuestros Servicios</h2>
+        <div class="servicios-grid">
+            <div class="card"><h3>01. Manicura</h3><p>Diseños personalizados y técnicas avanzadas de acrílico.</p></div>
+            <div class="card"><h3>02. Pedicura Spa</h3><p>Cuidado integral con productos de alta gama.</p></div>
+            <div class="card"><h3>03. Estilo Divino</h3><p>Asesoría exclusiva para tu esencia personal.</p></div>
+        </div>
+    </section>
 
-            <div class="resena-card">
-                <div class="quote-icon">“</div>
-                <p class="resena-texto">Mi pedicura spa favorita. El lugar es hermoso y el trato es de ultra lujo. Totalmente recomendado.</p>
-                <div class="resena-meta">
-                    <span class="stars">★★★★★</span>
-                    <span>Ana Paula L.</span>
-                </div>
-            </div>
+    <section class="seccion reveal" id="galeria">
+        <h2 class="titulo-seccion">Portafolio</h2>
+        <div class="carrusel-wrapper" id="scrollContainer">
+            <img src="Dise%C3%B1o%20de%20u%C3%B1as%201.jpg" class="foto">
+            <img src="Dise%C3%B1o%20de%20u%C3%B1as%202.jpg" class="foto">
+            <img src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&w=800&q=80" class="foto">
+            <img src="Dise%C3%B1o%20de%20u%C3%B1as%203.jpg" class="foto">
+            <img src="Dise%C3%B1o%20de%20u%C3%B1as%204.jpg" class="foto">
+            <img src="Dise%C3%B1o%20de%20u%C3%B1as%201.jpg" class="foto"> </div>
+    </section>
 
+    <section class="dark-block" id="reviews">
+        <div class="seccion reveal" style="padding: 0;">
+            <h2 class="titulo-seccion" style="color: var(--dorado);">Client Stories</h2>
             <div class="resena-card">
-                <div class="quote-icon">“</div>
-                <p class="resena-texto">Buscaba algo tipo editorial y Rox superó mis expectativas. Mis uñas se ven como de revista.</p>
-                <div class="resena-meta">
-                    <span class="stars">★★★★★</span>
-                    <span>Carla S.</span>
-                </div>
+                <p class="resena-texto">"Buscaba algo tipo editorial y Rox superó mis expectativas. Mis uñas se ven como de revista."</p>
+                <div class="resena-autor">★★★★★ — Carla S. (Google Maps)</div>
+            </div>
+            <div class="resena-card">
+                <p class="resena-texto">"La mejor pedicura spa en Guasave. La atención al detalle de Rox es impecable."</p>
+                <div class="resena-autor">★★★★★ — Ana Paula L. (Google Maps)</div>
             </div>
         </div>
     </section>
 
-    </body>
+    <section class="seccion reveal" id="social">
+        <h2 class="titulo-seccion">Síguenos</h2>
+        <p style="margin-bottom: 20px;">Explora nuestras tendencias en Instagram</p>
+        <strong style="display: block; color: var(--dorado); margin-bottom: 30px; letter-spacing: 2px;">@DIVINEBYROX</strong>
+        <a href="https://www.instagram.com/divinebyrox?igsh=MW1pdG5nMjE5NW9ocw==" target="_blank" class="btn">Instagram</a>
+    </section>
+
+    <section class="seccion reveal" id="citas">
+        <h2 class="titulo-seccion">Reservaciones</h2>
+        <div style="background: white; padding: 60px; border: 1px solid var(--cafe-negro);">
+            <a href="https://wa.me/526871597255?text=Hola%20Rox..." class="btn" style="border-color: #25D366; color: #25D366; margin-bottom: 20px;">Dudas por WhatsApp</a>
+            <br>
+            <a href="https://square.site/appointments/buyer/widget/aa4gj9u9t4wty1/LN83Y3ZADGGRJ" target="_blank" class="btn" style="background: var(--cafe-negro); color: white;">Agendar Cita en Square</a>
+        </div>
+    </section>
+
+    <section class="seccion reveal" id="ubicacion">
+        <h2 class="titulo-seccion">Ubicación</h2>
+        <p style="font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 30px;">Valles de Vidafel | Guasave, Sinaloa</p>
+        <div style="border: 1px solid var(--cafe-negro); overflow: hidden;">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3607.74712!2d-108.4747!3d25.5459!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDMyJzI1LjIiTiAxMDjCsDI4JzI4LjkiVw!5e0!3m2!1ses!2smx!4v1713370000000" style="width:100%; height:450px; border:0;"></iframe>
+        </div>
+        <p style="margin-top: 50px; font-size: 0.6rem; letter-spacing: 2px;">© 2026 DIVINE BY ROX - TODOS LOS DERECHOS RESERVADOS</p>
+    </section>
+
+    <a href="https://wa.me/526871597255" class="whatsapp-float" target="_blank">
+        <svg width="30" height="30" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.148-.67-1.611-.918-2.21-.242-.587-.487-.508-.67-.517-.172-.008-.37-.01-.568-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.659 1.433 5.628 1.433h.005c6.554 0 11.89-5.335 11.893-11.892a11.826 11.826 0 00-3.481-8.413z"></path></svg>
+    </a>
+
+    <script>
+        // REVEAL SYSTEM
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // GALERÍA DUAL (AUTO + MANUAL)
+        const container = document.getElementById('scrollContainer');
+        let isUserInteracting = false;
+        let autoScroll;
+
+        const startAuto = () => {
+            autoScroll = setInterval(() => {
+                if (!isUserInteracting) {
+                    container.scrollLeft += 1;
+                    if (container.scrollLeft >= (container.scrollWidth - container.clientWidth) - 5) container.scrollLeft = 0;
+                }
+            }, 30);
+        };
+
+        container.addEventListener('touchstart', () => { isUserInteracting = true; clearInterval(autoScroll); }, {passive: true});
+        container.addEventListener('touchend', () => { isUserInteracting = false; setTimeout(startAuto, 2000); }, {passive: true});
+        startAuto();
+    </script>
+</body>
 </html>
