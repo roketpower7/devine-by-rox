@@ -39,14 +39,18 @@
             position: relative;
         }
 
-        /* --- TRANSICIONES (REVEAL) --- */
+       /* --- TRANSICIONES (REVEAL) CORREGIDAS --- */
         .reveal {
             opacity: 0;
             transform: translateY(20px);
-            transition: all 0.8s ease-out;
-            will-change: transform, opacity;
+            /* REGLA DE ORO: Especificar solo lo que se anima, nunca usar 'all' */
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+            /* Se eliminó will-change para liberar la RAM del celular */
         }
-        .reveal.active { opacity: 1; transform: translateY(0); }
+        .reveal.active { 
+            opacity: 1; 
+            transform: translateY(0); 
+        }
 
         /* --- MENÚ TIPO PAINTBOX (STICKY) --- */
         .nav-bar {
