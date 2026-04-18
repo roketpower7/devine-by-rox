@@ -106,23 +106,46 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
 
-        /* 3. CARRUSEL */
-        .carrusel {
-            display: flex;
-            overflow-x: auto;
-            gap: 20px;
-            padding: 20px 0;
-            scrollbar-width: none;
-        }
-        .carrusel::-webkit-scrollbar { display: none; }
+       /* 3. CARRUSEL CON SCROLL FUNCIONAL */
+.carrusel {
+    display: flex;
+    overflow-x: auto; /* Permite el movimiento lateral */
+    gap: 20px;
+    padding: 20px 10px;
+    scroll-snap-type: x mandatory; /* Hace que las fotos se "ajusten" al deslizar */
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin; /* Barra fina en Firefox */
+    scrollbar-color: var(--dorado) var(--beige-oscuro);
+}
 
-        .foto {
-            flex: 0 0 280px;
-            height: 380px;
-            object-fit: cover;
-            border-radius: 15px;
-            border: 2px solid var(--dorado);
-        }
+/* Estilo de la barra de scroll para Chrome/Edge/Safari */
+.carrusel::-webkit-scrollbar {
+    height: 8px; /* Altura de la barra horizontal */
+}
+
+.carrusel::-webkit-scrollbar-thumb {
+    background: var(--dorado); /* Color dorado para la barra */
+    border-radius: 10px;
+}
+
+.carrusel::-webkit-scrollbar-track {
+    background: var(--beige-oscuro); /* Color de fondo de la barra */
+    border-radius: 10px;
+}
+
+.foto {
+    flex: 0 0 280px;
+    height: 380px;
+    object-fit: cover;
+    border-radius: 15px;
+    border: 2px solid var(--dorado);
+    scroll-snap-align: start; /* Alinea la foto al inicio al hacer scroll */
+    transition: transform 0.3s;
+}
+
+.foto:hover {
+    transform: scale(1.02); /* Efecto sutil al pasar el mouse */
+}
 
         /* 4. WHATSAPP Y MAPA */
         .ws-link {
