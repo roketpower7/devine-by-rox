@@ -49,7 +49,7 @@
             opacity: 1; 
         }
 
-        /* --- MENÚ TIPO PAINTBOX (MINIMALISMO EXTREMO REPARADO) --- */
+        /* --- MENÚ TIPO PAINTBOX --- */
         .nav-bar {
             position: fixed; top: 0; width: 100%;
             background: rgba(249, 247, 242, 0.95);
@@ -59,7 +59,6 @@
             padding: 15px 50px; z-index: 2000;
         }
         
-        /* RESTAURADO: Estilos del Logo */
         .nav-logo { font-family: 'Great Vibes', cursive; font-size: 1.8rem; color: var(--cafe-negro); text-decoration: none; }
 
         .menu-toggle { display: block; cursor: pointer; } 
@@ -84,7 +83,6 @@
 
         .nav-links.active { opacity: 1; visibility: visible; transform: translateY(0); }
         
-        /* RESTAURADO: Estilos de los Enlaces */
         .nav-links a { 
             text-decoration: none; 
             color: var(--cafe-negro); 
@@ -100,12 +98,11 @@
         section { scroll-margin-top: 80px; padding: 100px 20px; max-width: 1200px; margin: 0 auto; text-align: center; }
         .titulo-seccion { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 6px; font-weight: 700; margin-bottom: 60px; }
 
-/* --- HERO (CON CONTRASTE MEJORADO) --- */
+        /* --- HERO (CON CONTRASTE MEJORADO) --- */
         .hero { 
             height: 100dvh; 
             min-height: 100vh; 
             display: flex; flex-direction: column; justify-content: center; align-items: center; 
-            /* Aumentamos el tinte oscuro de 0.3 a 0.6 para apagar la luz del fondo */
             background: linear-gradient(rgba(26, 18, 11, 0.6), rgba(26, 18, 11, 0.6)), 
                         url('https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=1920&q=80') center/cover;
             color: var(--blanco); border-bottom: 1px solid var(--cafe-negro);
@@ -117,7 +114,6 @@
         .hero p { 
             letter-spacing: 10px; text-transform: uppercase; font-size: 0.9rem; 
             margin-bottom: 30px; 
-            /* Letra blanca, en negritas y con sombra dura para despegarla del fondo */
             color: var(--blanco); 
             font-weight: 700;
             text-shadow: 0px 4px 12px rgba(0,0,0,0.9);
@@ -128,7 +124,7 @@
         .card { padding: 60px 40px; border: 0.5px solid var(--cafe-negro); background: var(--blanco); text-align: left; transition: 0.4s; }
         .card:hover { background: var(--cafe-negro); color: var(--blanco); }
 
-        /* --- GALERÍA HÍBRIDA (AUTO + MANUAL) --- */
+        /* --- GALERÍA HÍBRIDA --- */
         .carrusel-wrapper { width: 100%; overflow-x: auto; display: flex; gap: 15px; padding: 20px 0; scrollbar-width: none; }
         .carrusel-wrapper::-webkit-scrollbar { display: none; }
         .foto { width: 300px; height: 400px; object-fit: cover; border: 1px solid var(--cafe-negro); flex-shrink: 0; }
@@ -147,10 +143,12 @@
         .btn:hover { background: var(--cafe-negro); color: var(--blanco); }
         .btn-white { border-color: var(--blanco); color: var(--blanco); }
 
+        /* --- WHATSAPP FLOTANTE ESTILO PÍLDORA --- */
         .whatsapp-float {
             position: fixed; bottom: 25px; right: 25px; background: var(--cafe-negro); 
-            color: var(--dorado); width: 60px; height: 60px; display: flex; 
+            color: var(--dorado); display: flex; gap: 12px;
             justify-content: center; align-items: center; border: 1px solid var(--dorado); z-index: 3000;
+            padding: 12px 25px; text-decoration: none; transition: 0.3s;
         }
 
         /* Ajuste de márgenes para móviles */
@@ -242,9 +240,7 @@
         <section class="seccion reveal" id="citas">
             <h2 class="titulo-seccion">Reservaciones</h2>
             <div style="background: white; padding: 60px; border: 1px solid var(--cafe-negro);">
-                <a href="https://wa.me/526871597255?text=Hola%20Rox..." class="btn" style="border-color: #25D366; color: #25D366; margin-bottom: 20px;">Dudas por WhatsApp</a>
-                <br>
-                <a href="https://square.site/appointments/buyer/widget/aa4gj9u9t4wty1/LN83Y3ZADGGRJ" target="_blank" class="btn" style="background: var(--cafe-negro); color: white;">Agendar Cita</a>
+                <a href="https://square.site/appointments/buyer/widget/aa4gj9u9t4wty1/LN83Y3ZADGGRJ" target="_blank" class="btn" style="background: var(--cafe-negro); color: white;">Agendar Cita en Square</a>
             </div>
         </section>
 
@@ -258,7 +254,8 @@
         </section>
 
         <a href="https://wa.me/526871597255" class="whatsapp-float" target="_blank">
-            <svg width="30" height="30" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.148-.67-1.611-.918-2.21-.242-.587-.487-.508-.67-.517-.172-.008-.37-.01-.568-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.659 1.433 5.628 1.433h.005c6.554 0 11.89-5.335 11.893-11.892a11.826 11.826 0 00-3.481-8.413z"></path></svg>
+            <span style="font-size: 0.65rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;">Dudas</span>
+            <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.148-.67-1.611-.918-2.21-.242-.587-.487-.508-.67-.517-.172-.008-.37-.01-.568-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.659 1.433 5.628 1.433h.005c6.554 0 11.89-5.335 11.893-11.892a11.826 11.826 0 00-3.481-8.413z"></path></svg>
         </a>
 
     </div>
@@ -270,7 +267,7 @@
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // GALERÍA DUAL (AUTO + MANUAL)
+        // GALERÍA DUAL
         const container = document.getElementById('scrollContainer');
         let isUserInteracting = false;
         let autoScroll;
@@ -288,30 +285,26 @@
         container.addEventListener('touchend', () => { isUserInteracting = false; setTimeout(startAuto, 2000); }, {passive: true});
         startAuto();
     </script>
-   <script>
-        // LÓGICA DEL MENÚ HAMBURGUESA (MULTI-PLATAFORMA)
+    <script>
+        // LÓGICA DEL MENÚ HAMBURGUESA MULTIPLATAFORMA
         const mobileMenu = document.getElementById('mobile-menu');
         const navLinks = document.getElementById('nav-links');
         
-        // 1. Abre y cierra el menú, pero DETIENE el clic para que no active el cierre global
         mobileMenu.addEventListener('click', (event) => {
             event.stopPropagation(); 
             navLinks.classList.toggle('active');
         });
 
-        // 2. Protege el interior del menú (para que no se cierre si das clic en un espacio vacío del menú)
         navLinks.addEventListener('click', (event) => {
             event.stopPropagation();
         });
 
-        // 3. Cierra el menú automáticamente al elegir una opción
         navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
             });
         });
 
-        // 4. El "Click Outside": Si el clic llega hasta el documento general, cierra el menú
         document.addEventListener('click', () => {
             if (navLinks.classList.contains('active')) {
                 navLinks.classList.remove('active');
